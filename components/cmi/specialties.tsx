@@ -1,0 +1,5 @@
+import { HeartPulse, Brain, Ear, Stethoscope, ClipboardList, ShieldCheck, ArrowRight } from 'lucide-react';
+import { specialties, appointmentHref } from '@/lib/clinic';
+import { SectionHeading } from './shared';
+const icons = { heart: HeartPulse, brain: Brain, ear: Ear, stethoscope: Stethoscope, clipboard: ClipboardList, shield: ShieldCheck };
+export function Specialties() { return <section className="specialties container" id="especialidades"><SectionHeading eyebrow="Especialidades" title="Cuidado especializado para você" center/><div className="specialty-grid">{specialties.map(item => { const Icon = icons[item.icon as keyof typeof icons]; return <article className="specialty-card" key={item.title}><div className="specialty-icon"><Icon strokeWidth={1.6}/></div><h3>{item.title}</h3><p>{item.description}</p><a href={appointmentHref} aria-label={`Consultar atendimento em ${item.title}`}>Saiba mais <ArrowRight size={17}/></a></article>; })}</div><p className="section-note">Consulte a equipe sobre os serviços disponíveis e a agenda de atendimento.</p></section>; }
